@@ -8,6 +8,7 @@ import MyOrder from '../Pages/MyOrder'
 import NotFound from '../Pages/NotFound'
 import Signin from '../Pages/Signin'
 import NavBar from '../Components/NavBar'
+import { EcommerceCartContextProvider } from '../Context'
 
 const AppRoutes = () => {
   let routes = useRoutes([
@@ -24,10 +25,12 @@ const AppRoutes = () => {
 const Index = () => {
   return (
     <>
+    <EcommerceCartContextProvider>
       <BrowserRouter>
         <AppRoutes />
         <NavBar />
       </BrowserRouter>
+    </EcommerceCartContextProvider>
     </>
   )
 }

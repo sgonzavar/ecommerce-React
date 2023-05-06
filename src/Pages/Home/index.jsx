@@ -10,10 +10,12 @@ const Home = () => {
   
   useEffect(() => {
     const fetchData = async () => {
-      const result = await axios(
-        'https://api.escuelajs.co/api/v1/products',
-      );
-      setData(result.data);
+      try {
+        const result = await axios.get('https://api.escuelajs.co/api/v1/products');
+        setData(result.data);
+      } catch (error) {
+        console.log(error);
+      }
     };
     fetchData();
   }, []);
