@@ -4,9 +4,7 @@ import { XMarkIcon } from '@heroicons/react/24/solid'
 import './ProductDetail.css'
 
 const ProductDetail = () => {
-
   const context = useContext(ecommerceCartContext)
-  console.log(context.isProductDetailOpened)
 
   return (
     <aside className= {`${context.isProductDetailOpened ? 'block' : 'hidden' } product-detail-container flex-col fixed bg-white right-0 border border-black rounded`}  >
