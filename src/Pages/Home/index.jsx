@@ -1,5 +1,6 @@
 import Layout from "../../Layout"
 import Card from '../../Components/Card'
+import ProductDetail from "../../Components/ProductDetail";
 
 //Hooks
 import { useState, useEffect } from 'react';
@@ -23,12 +24,12 @@ const Home = () => {
 
   return (
     <Layout>
-      Home
       <div className='grid grid-cols-4 gap-4 w-full max-w-screen-lg'>
         {data.map(item => (
           <Card key={item.id} data={item}/>
         ))}
       </div>
+      <ProductDetail />
     </Layout>
   )
 }

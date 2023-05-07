@@ -1,10 +1,21 @@
-import { createContext } from 'react'
+import { createContext, useState } from 'react'
 
-const ecommerceCartContext = createContext()
+export const ecommerceCartContext = createContext()
 
 export const EcommerceCartContextProvider = ({ children }) => {
+  const [count, setCount] = useState(0)
+  const [isProductDetailOpened, setIsProductDetailOpend] = useState(false)
+  const openProductDetail = () => setIsProductDetailOpend(true)
+  const closeProductDetail = () => setIsProductDetailOpend(false)
+  
   return (
-    <ecommerceCartContext.Provider>
+    <ecommerceCartContext.Provider value={{ 
+      count, 
+      setCount,
+      isProductDetailOpened,
+      openProductDetail,
+      closeProductDetail
+      }}>
       {children}
     </ecommerceCartContext.Provider>
   )

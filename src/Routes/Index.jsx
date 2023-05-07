@@ -25,12 +25,12 @@ const AppRoutes = () => {
 const Index = () => {
   return (
     <>
-    <EcommerceCartContextProvider>
-      <BrowserRouter>
-        <AppRoutes />
-        <NavBar />
-      </BrowserRouter>
-    </EcommerceCartContextProvider>
+      <EcommerceCartContextProvider>
+        <BrowserRouter>
+          <AppRoutes />
+          <NavBar />
+        </BrowserRouter>
+      </EcommerceCartContextProvider>
     </>
   )
 }
