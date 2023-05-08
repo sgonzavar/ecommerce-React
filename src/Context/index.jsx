@@ -12,7 +12,7 @@ export const EcommerceCartContextProvider = ({ children }) => {
   const closeProductDetail = () => setIsProductDetailOpend(false)
   
   // Product detail / show product
-  const [productShow, setProductShow] = useState({})
+  const [productToShow, setProductToShow] = useState({})
 
   return (
     <ecommerceCartContext.Provider value={{ 
@@ -21,8 +21,8 @@ export const EcommerceCartContextProvider = ({ children }) => {
       isProductDetailOpened,
       openProductDetail,
       closeProductDetail,
-      productShow,
-      setProductShow
+      productToShow,
+      setProductToShow
       }}>
       {children}
     </ecommerceCartContext.Provider>
