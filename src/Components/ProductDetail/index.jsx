@@ -7,7 +7,7 @@ const ProductDetail = () => {
   const context = useContext(ecommerceCartContext)
 
   return (
-    <aside className= {`${context.isProductDetailOpened ? 'block' : 'hidden' } product-detail-container flex-col fixed bg-white right-0 border border-black rounded`}  >
+    <aside className= {`${context.isProductDetailOpened ? 'flex' : 'hidden' } product-detail-container flex-col fixed bg-white right-0 border border-black rounded`}  >
       <div className='flex justify-between items-center px-4 py-2'>
         <h2 className='font-medium text-xl'>Detail</h2>
         <span>

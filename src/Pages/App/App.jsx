@@ -1,5 +1,3 @@
-//Hooks
-
 //Components
 import Routes from '../../Routes/Index'
 

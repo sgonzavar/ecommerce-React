@@ -10,9 +10,17 @@ export const EcommerceCartContextProvider = ({ children }) => {
   const [isProductDetailOpened, setIsProductDetailOpend] = useState(false)
   const openProductDetail = () => setIsProductDetailOpend(true)
   const closeProductDetail = () => setIsProductDetailOpend(false)
+
+  // checkout detail / open - close
+  const [isCheckoutSideMenuOpened, setIsCheckoutSideMenuOpend] = useState(false)
+  const openCheckoutSideMenu = () => setIsCheckoutSideMenuOpend(true)
+  const closeCheckoutSideMenu = () => setIsCheckoutSideMenuOpend(false)
   
   // Product detail / show product
   const [productToShow, setProductToShow] = useState({})
+
+  //Shoppin car / Add product to car
+  const [carProduct, setCarProduct] = useState([])
 
   return (
     <ecommerceCartContext.Provider value={{ 
@@ -22,10 +30,14 @@ export const EcommerceCartContextProvider = ({ children }) => {
       openProductDetail,
       closeProductDetail,
       productToShow,
-      setProductToShow
+      setProductToShow,
+      carProduct,
+      setCarProduct,
+      isCheckoutSideMenuOpened,
+      openCheckoutSideMenu,
+      closeCheckoutSideMenu
       }}>
       {children}
     </ecommerceCartContext.Provider>
   )
-
 }

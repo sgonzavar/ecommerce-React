@@ -8,6 +8,7 @@ import MyOrder from '../Pages/MyOrder'
 import NotFound from '../Pages/NotFound'
 import Signin from '../Pages/Signin'
 import NavBar from '../Components/NavBar'
+import CheckoutSideMenu from '../Components/CheckoutSideMenu'
 import { EcommerceCartContextProvider } from '../Context'
 
 const AppRoutes = () => {
@@ -29,6 +30,7 @@ const Index = () => {
         <BrowserRouter>
           <AppRoutes />
           <NavBar />
+          <CheckoutSideMenu />
         </BrowserRouter>
       </EcommerceCartContextProvider>
     </>
