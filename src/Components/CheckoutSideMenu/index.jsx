@@ -10,6 +10,11 @@ import './CheckoutSideMenu.css'
 const CheckoutSideMenu = () => {
   const context = useContext(ecommerceCartContext)
 
+  const handleDeleteOrderItem = (id) => {
+    const filterDeleteProduct =  context.carProduct.filter(product => product.id != id)
+    context.setCarProduct(filterDeleteProduct)
+  }
+
   return (
     <aside className= {`${context.isCheckoutSideMenuOpened ? 'flex' : 'hidden' } product-detail-container flex-col fixed bg-white right-0 border border-black rounded`}  >
       <div className='flex justify-between items-center px-4 py-2'>
@@ -21,14 +26,16 @@ const CheckoutSideMenu = () => {
           />
         </span>
       </div>
-      <div className='px-6'>
+      <div className='px-6 pt-6 overflow-y-scroll'>
         {
           context.carProduct.map(product => (
             <OrderCard 
               key={product.id}
+              id={product.id}
               title={product.title}
               price={product.price}
               imageUrl={product.images}
+              listenDelete={handleDeleteOrderItem}
             />
           ))
         }
