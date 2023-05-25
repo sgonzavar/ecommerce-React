@@ -1,6 +1,7 @@
 import { useContext } from 'react'
 import { ecommerceCartContext } from '../../Context'
 import { XMarkIcon } from '@heroicons/react/24/solid'
+import { totalPrice } from '../../utils/index'
 
 //component
 import OrderCard from '../OrderCard'
@@ -13,6 +14,7 @@ const CheckoutSideMenu = () => {
   const handleDeleteOrderItem = (id) => {
     const filterDeleteProduct =  context.carProduct.filter(product => product.id != id)
     context.setCarProduct(filterDeleteProduct)
+    context.setCount(context.count - 1)
   }
 
   return (
@@ -39,6 +41,12 @@ const CheckoutSideMenu = () => {
             />
           ))
         }
+      </div>
+      <div className='px-6'> 
+        <p className='flex justify-between items-center'>
+          <span className='font-light'>Total:</span>
+          <span className='font-medium text-2xl'>${totalPrice(context.carProduct)}</span>
+        </p>
       </div>
     </aside>
   )
