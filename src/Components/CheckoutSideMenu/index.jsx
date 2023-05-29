@@ -1,11 +1,11 @@
 import { useContext } from 'react'
+import { Link } from 'react-router-dom'
 import { ecommerceCartContext } from '../../Context'
 import { XMarkIcon } from '@heroicons/react/24/solid'
-import { totalPrice } from '../../utils/index'
-
+import { totalPrice, RandomDate } from '../../utils/index'
 //component
 import OrderCard from '../OrderCard'
-
+//styles
 import './CheckoutSideMenu.css'
 
 const CheckoutSideMenu = () => {
@@ -15,6 +15,18 @@ const CheckoutSideMenu = () => {
     const filterDeleteProduct =  context.carProduct.filter(product => product.id != id)
     context.setCarProduct(filterDeleteProduct)
     context.setCount(context.count - 1)
+  }
+
+  const handleCheckout = () => {
+    const orderToAdd = {
+      date: RandomDate(),
+      products: context.carProduct,
+      totalProducts: context.carProduct.length,
+      totalPrice: totalPrice(context.carProduct)
+    }
+    context.setOrder([...context.order, orderToAdd])
+    context.setCount(0)
+    context.setCarProduct([])
   }
 
   return (
@@ -28,7 +40,7 @@ const CheckoutSideMenu = () => {
           />
         </span>
       </div>
-      <div className='px-6 pt-6 overflow-y-scroll'>
+      <div className='px-6 pt-6 overflow-y-scroll flex-1'>
         {
           context.carProduct.map(product => (
             <OrderCard 
@@ -42,11 +54,17 @@ const CheckoutSideMenu = () => {
           ))
         }
       </div>
-      <div className='px-6'> 
-        <p className='flex justify-between items-center'>
+      <div className='px-6 mb-6'> 
+        <p className='flex justify-between items-center mb-2'>
           <span className='font-light'>Total:</span>
           <span className='font-medium text-2xl'>${totalPrice(context.carProduct)}</span>
         </p>
+        <Link to={'my-orders/last'}>
+          <button className='w-full bg-black py-3 text-white rounded-lg' 
+            onClick={() => handleCheckout()}
+          >Checkout
+          </button>
+        </Link>
       </div>
     </aside>
   )
